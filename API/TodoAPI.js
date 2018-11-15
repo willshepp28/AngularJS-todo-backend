@@ -37,7 +37,25 @@ router.get("/:id", async(request, response) => {
         console.log(error);
         return response.status(400).send("error");
     }
-})
+});
+
+
+
+// Mark todo as completed
+router.get("/completed/:todoId", (request, response) => {
+
+    try {
+        const todos = await models.Todo.update({ complete: true},
+        {where: { id: parseInt(request.params.id)}});
+
+        return response.status(200).send("created new todo");
+        
+    }
+    catch(error){
+        console.log(error);
+        return response.status(400).send(error);
+    }
+});
 
 
 module.exports = router;
