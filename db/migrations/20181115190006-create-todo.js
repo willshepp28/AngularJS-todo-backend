@@ -9,7 +9,7 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       activity: {
-        type: Sequelize.STRING
+        type: Sequelize.TEXT
       },
       complete: {
         type: Sequelize.BOOLEAN

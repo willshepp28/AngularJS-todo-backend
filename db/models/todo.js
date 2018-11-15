@@ -1,7 +1,7 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
   const Todo = sequelize.define('Todo', {
-    activity: DataTypes.STRING,
+    activity: DataTypes.TEXT,
     complete: {
       type: DataTypes.BOOLEAN,
       defaultValue: false
