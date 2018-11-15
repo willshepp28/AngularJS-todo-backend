@@ -1,6 +1,6 @@
 {
   "development": {
-    "username": "Admin",
+    "username": "root",
     "password": null,
     "database": "ng_todo",
     "host": "127.0.0.1",
