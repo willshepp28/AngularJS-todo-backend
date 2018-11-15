@@ -42,11 +42,11 @@ router.get("/:id", async(request, response) => {
 
 
 // Mark todo as completed
-router.get("/completed/:todoId", (request, response) => {
+router.get("/completed/:todoId", async(request, response) => {
 
     try {
         const todos = await models.Todo.update({ complete: true},
-        {where: { id: parseInt(request.params.id)}});
+        {where: { id: parseInt(request.params.todoId)}});
 
         return response.status(200).send("created new todo");
         
