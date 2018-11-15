@@ -7,6 +7,7 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const morgan = require("morgan");
 const API = require("./API/API");
+const TodoAPI = require("./API/TodoAPI");
 const cors = require("cors");
 const port = process.env.PORT || 3000;
 
@@ -32,6 +33,7 @@ require('dotenv').config();
 | Api
 |--------------------------------------------------------------------------
 */
+application.use("/api/v1/todo/", TodoAPI);
 application.use("/api/v1/", API);
 
 
