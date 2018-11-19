@@ -39,15 +39,20 @@ router.post("/login", async(request, response) => {
 
     console.log("In the login endpoint");
 
-    try {
-        const login = await models.User.create(request.body);
+    const signup = await models.User.findAll(request.body)
+        .then( user => {
 
-        return response.status(200).send();
-    }
-    catch(error){
-        console.log(error);
-        return response.status(400).send("Error");
-    }
+            if( user < 1) {
+                return response.status(404).send("no user found")
+            }
+
+            let token = jwt.sign({ user: [{ id: user[0].id }] }, process.env.JWT_SECRET);
+            response.status(200).json({ token })
+        })
+        .catch(error => { 
+            console.log(error);
+            return response.status(400).send("Username or password not found");
+        })
 
 });
 
